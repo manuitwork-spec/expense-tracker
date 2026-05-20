@@ -1,8 +1,10 @@
 package com.manuitwork.expensetracker.group;
 
 import com.manuitwork.expensetracker.user.User;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class GroupService {
@@ -21,5 +23,14 @@ public class GroupService {
         group.getMembers().add(owner);
 
         return householdGroupRepository.save(group);
+    }
+
+    @Transactional(readOnly = true)
+    public List<HouseholdGroup> findAll() {
+        return householdGroupRepository.findAll();
+    }
+
+    public List<HouseholdGroup> findGroupsForUser(User user) {
+        return householdGroupRepository.findByMembersContaining(user);
     }
 }

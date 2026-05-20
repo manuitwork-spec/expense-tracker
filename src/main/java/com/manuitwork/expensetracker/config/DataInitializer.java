@@ -17,15 +17,16 @@ public class DataInitializer {
                                                   PasswordEncoder passwordEncoder) {
         return args -> {
             String adminEmail = "admin@expense.local";
+            String password = "Admin123!";
 
             if (userService.findByEmail(adminEmail).isEmpty()) {
                 User admin = new User();
                 admin.setEmail(adminEmail);
+                admin.setPassword(passwordEncoder.encode(password));
                 admin.setFirstName("Admin");
                 admin.setLastName("User");
                 admin.setEnabled(true);
                 admin.setRole(UserRole.ADMIN);
-                admin.setPassword(passwordEncoder.encode("password"));
 
                 userService.createUser(admin);
             }
