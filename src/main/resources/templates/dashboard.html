@@ -29,7 +29,27 @@
 
 <div class="container mt-4">
     <h1 class="mb-3">Dashboard</h1>
-    <p class="text-muted">Here we will later show your groups, expenses and reports.</p>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Group Name</th>
+        <th>Owner</th>
+        <th>Members</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="group : ${groups}">
+        <td th:text="${group.name}">Group Name</td>
+        <td th:text="${group.owner.email}">Owner</td>
+        <td th:text="${#lists.size(group.members)}">0</td>
+    </tr>
+    </tbody>
+</table>
+
+<div th:if="${#lists.isEmpty(groups)}" class="alert alert-info">
+    No groups found for your user.
 </div>
 
 <script
