@@ -26,3 +26,8 @@ logging:
     root: INFO
     org.springframework.web: INFO
     org.hibernate.SQL: DEBUG
+
+app:
+  admin:
+    email: admin@expense.local
+    password: Admin123!
