@@ -8,4 +8,5 @@ import java.util.List;
 public interface HouseholdGroupRepository extends JpaRepository<HouseholdGroup, Integer> {
 
     List<HouseholdGroup> findByMembersContaining(User user);
+    boolean existsByNameIgnoreCaseAndMembersContaining(String name, User user);
 }

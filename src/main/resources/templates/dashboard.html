@@ -59,9 +59,10 @@
         <label for="name" class="form-label">Group Name</label>
         <input type="text"
                id="name"
-               class="form-control"
+               th:class="${#fields.hasErrors('name')} ? 'form-control is-invalid' : 'form-control'"
                th:field="*{name}"
                placeholder="Eg: Main House" />
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Validation Error</div>
     </div>
     <button type="submit" class="btn btn-primary">Create Group</button>
 </form>
